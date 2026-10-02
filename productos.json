@@ -1,0 +1,46 @@
+{
+  "moneda": "$",
+  "secciones": [
+    {
+      "titulo": "Perfumes",
+      "estilo": "oscuro",
+      "productos": [
+        { "nombre": "Bleu De Chanel",    "descripcion": "Eau de Parfum 100ml",    "precio": 2200, "precioOriginal": 3600, "vendido": false, "aparece": true, "imagen": "img/bleu-de-chanel.jpg" },
+        { "nombre": "Amber Labdanum",    "descripcion": "Jo Malone London 100ml", "precio": 2100, "precioOriginal": 3300, "vendido": false, "aparece": true, "imagen": "img/amber-labdanum.jpg" },
+        { "nombre": "Acqua di Gio",      "descripcion": "Parfum 100ml",           "precio": 1375, "precioOriginal": 1800, "vendido": false, "aparece": true, "imagen": "img/acqua-di-gio.jpg" },
+        { "nombre": "Stronger with you", "descripcion": "Parfum 100ml",           "precio": 1325, "precioOriginal": 1920, "vendido": false, "aparece": true, "imagen": "img/stronger-with-you.jpg" },
+        { "nombre": "Azzaro",            "descripcion": "Wanted 100ml",           "precio": 800,  "precioOriginal": 1400, "vendido": false, "aparece": true, "imagen": "img/azzaro-wanted.jpg" },
+        { "nombre": "Phantom",           "descripcion": "Parfum 100ml",           "precio": 950,  "precioOriginal": 1500, "vendido": false, "aparece": true, "imagen": "img/phantom-parfum.jpg" },
+        { "nombre": "Phantom",           "descripcion": "Intense 100ml",          "precio": 1200, "precioOriginal": 2300, "vendido": false, "aparece": true, "imagen": "img/phantom-intense.jpg" },
+        { "nombre": "Versace Eros",      "descripcion": "EDT 100ml",              "precio": 900,  "precioOriginal": 1200, "vendido": true, "aparece": true, "imagen": "img/versace-eros-edt.jpg" },
+        { "nombre": "Versace Eros",      "descripcion": "Najim 100ml",            "precio": 1125, "precioOriginal": 2000, "vendido": false, "aparece": true, "imagen": "img/versace-eros-najim.jpg" }
+      ]
+    },
+    {
+      "titulo": "Perfumes",
+      "estilo": "rosa",
+      "productos": [
+        { "nombre": "Million Gold",       "descripcion": "For Her 80ml",          "precio": 1100, "precioOriginal": 1600, "vendido": false, "aparece": true, "imagen": "img/million-gold.jpg" },
+        { "nombre": "La Vie Est Belle",   "descripcion": "EDP 100ml",             "precio": 1250, "precioOriginal": 1840, "vendido": false, "aparece": true, "imagen": "img/la-vie-est-belle.jpg" },
+        { "nombre": "Purple Melancholia", "descripcion": "Valentino Donna 100ml", "precio": 1275, "precioOriginal": 2000, "vendido": false, "aparece": true, "imagen": "img/purple-melancholia.jpg" },
+        { "nombre": "Light Blue",         "descripcion": "Dolce & Gabbana 100ml", "precio": 600,  "precioOriginal": 1300, "vendido": false, "aparece": true, "imagen": "img/light-blue.jpg" },
+        { "nombre": "Good Girl",          "descripcion": "CH Blush Elixir 80ml",  "precio": 1400, "precioOriginal": 2000, "vendido": false, "aparece": true, "imagen": "img/good-girl.jpg" },
+        { "nombre": "La Bomba",           "descripcion": "Carolina Herrera 80ml", "precio": 1525, "precioOriginal": 3000, "vendido": false, "aparece": true, "imagen": "img/la-bomba.jpg" }
+      ]
+    }
+  ],
+  "preguntas": [
+    {
+      "pregunta": "¿Son originales?",
+      "respuesta": "¡Claro! Los perfumes son 100% originales.\n\nSalen de la misma línea de producción que un perfume regular. La única diferencia es que vienen en empaque de presentación o prueba."
+    },
+    {
+      "pregunta": "¿Por qué son más baratos si son originales?",
+      "respuesta": "Porque no pagas el empaque de lujo. Al venir en una caja de cartón sencilla (sin acabados costosos ni celofán), el costo de producción baja y ese ahorro se traslada directamente a ti."
+    },
+    {
+      "pregunta": "¿Qué es ese precio rojo tachado?",
+      "respuesta": "Es el precio original del perfume en tienda.\n\nLo pusimos para que te des una idea del cambio de precio y de cuánto ahorras comprando con nosotros."
+    }
+  ]
+}
