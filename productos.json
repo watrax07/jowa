@@ -13,7 +13,7 @@
         { "nombre": "Phantom",           "descripcion": "Parfum 100ml",           "precio": 950,  "precioOriginal": 1500, "vendido": false, "aparece": true, "imagen": "img/phantom-parfum.jpg" },
         { "nombre": "Phantom",           "descripcion": "Intense 100ml",          "precio": 1200, "precioOriginal": 2300, "vendido": false, "aparece": true, "imagen": "img/phantom-intense.jpg" },
         { "nombre": "Versace Eros",      "descripcion": "EDT 100ml",              "precio": 900,  "precioOriginal": 1200, "vendido": true, "aparece": true, "imagen": "img/versace-eros-edt.jpg" },
-        { "nombre": "Versace Eros",      "descripcion": "Najim 100ml",            "precio": 1125, "precioOriginal": 2000, "vendido": false, "aparece": true, "imagen": "img/versace-eros-najim.jpg" }
+        { "nombre": "Versace Eros",      "descripcion": "Najim 100ml",            "precio": 1125, "precioOriginal": 2000, "vendido": true, "aparece": true, "imagen": "img/versace-eros-najim.jpg" }
       ]
     },
     {
@@ -21,7 +21,7 @@
       "estilo": "rosa",
       "productos": [
         { "nombre": "Million Gold",       "descripcion": "For Her 80ml",          "precio": 1100, "precioOriginal": 1600, "vendido": false, "aparece": true, "imagen": "img/million-gold.jpg" },
-        { "nombre": "La Vie Est Belle",   "descripcion": "EDP 100ml",             "precio": 1250, "precioOriginal": 1840, "vendido": false, "aparece": true, "imagen": "img/la-vie-est-belle.jpg" },
+        { "nombre": "La Vie Est Belle",   "descripcion": "EDP 100ml",             "precio": 1250, "precioOriginal": 1840, "vendido": true, "aparece": true, "imagen": "img/la-vie-est-belle.jpg" },
         { "nombre": "Purple Melancholia", "descripcion": "Valentino Donna 100ml", "precio": 1275, "precioOriginal": 2000, "vendido": false, "aparece": true, "imagen": "img/purple-melancholia.jpg" },
         { "nombre": "Light Blue",         "descripcion": "Dolce & Gabbana 100ml", "precio": 600,  "precioOriginal": 1300, "vendido": false, "aparece": true, "imagen": "img/light-blue.jpg" },
         { "nombre": "Good Girl",          "descripcion": "CH Blush Elixir 80ml",  "precio": 1400, "precioOriginal": 2000, "vendido": false, "aparece": true, "imagen": "img/good-girl.jpg" },
