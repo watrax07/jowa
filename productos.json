@@ -22,10 +22,10 @@
       "productos": [
         { "nombre": "Million Gold",       "descripcion": "For Her 80ml",          "precio": 1100, "precioOriginal": 1600, "vendido": false, "aparece": true, "imagen": "img/million-gold.jpg" },
         { "nombre": "La Vie Est Belle",   "descripcion": "EDP 100ml",             "precio": 1250, "precioOriginal": 1840, "vendido": true, "aparece": true, "imagen": "img/la-vie-est-belle.jpg" },
-        { "nombre": "Purple Melancholia", "descripcion": "Valentino Donna 100ml", "precio": 1275, "precioOriginal": 2000, "vendido": false, "aparece": true, "imagen": "img/purple-melancholia.jpg" },
+        { "nombre": "Purple Melancholia", "descripcion": "Valentino Donna 100ml", "precio": 1275, "precioOriginal": 2000, "vendido": true, "aparece": true, "imagen": "img/purple-melancholia.jpg" },
         { "nombre": "Light Blue",         "descripcion": "Dolce & Gabbana 100ml", "precio": 600,  "precioOriginal": 1300, "vendido": false, "aparece": true, "imagen": "img/light-blue.jpg" },
-        { "nombre": "Good Girl",          "descripcion": "CH Blush Elixir 80ml",  "precio": 1400, "precioOriginal": 2000, "vendido": false, "aparece": true, "imagen": "img/good-girl.jpg" },
-        { "nombre": "La Bomba",           "descripcion": "Carolina Herrera 80ml", "precio": 1525, "precioOriginal": 3000, "vendido": false, "aparece": true, "imagen": "img/la-bomba.jpg" }
+        { "nombre": "Good Girl",          "descripcion": "CH Blush Elixir 80ml",  "precio": 1400, "precioOriginal": 2000, "vendido": true, "aparece": true, "imagen": "img/good-girl.jpg" },
+        { "nombre": "La Bomba",           "descripcion": "Carolina Herrera 80ml", "precio": 1525, "precioOriginal": 3000, "vendido": true, "aparece": true, "imagen": "img/la-bomba.jpg" }
       ]
     }
   ],
