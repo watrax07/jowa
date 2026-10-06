@@ -11,7 +11,7 @@
         { "nombre": "Stronger with you", "descripcion": "Parfum 100ml",           "precio": 1325, "precioOriginal": 1920, "vendido": false, "aparece": true, "imagen": "img/stronger-with-you.jpg" },
         { "nombre": "Azzaro",            "descripcion": "Wanted 100ml",           "precio": 800,  "precioOriginal": 1400, "vendido": false, "aparece": true, "imagen": "img/azzaro-wanted.jpg" },
         { "nombre": "Phantom",           "descripcion": "Parfum 100ml",           "precio": 950,  "precioOriginal": 1500, "vendido": false, "aparece": true, "imagen": "img/phantom-parfum.jpg" },
-        { "nombre": "Phantom",           "descripcion": "Intense 100ml",          "precio": 1200, "precioOriginal": 2300, "vendido": true, "aparece": true, "imagen": "img/phantom-intense.jpg" },
+        { "nombre": "Phantom",           "descripcion": "Intense 100ml",          "precio": 1200, "precioOriginal": 2300, "vendido": false, "aparece": true, "imagen": "img/phantom-intense.jpg" },
         { "nombre": "Versace Eros",      "descripcion": "EDT 100ml",              "precio": 900,  "precioOriginal": 1200, "vendido": false, "aparece": true, "imagen": "img/versace-eros-edt.jpg" },
         { "nombre": "Versace Eros",      "descripcion": "Najim 100ml",            "precio": 1125, "precioOriginal": 2000, "vendido": false, "aparece": true, "imagen": "img/versace-eros-najim.jpg" }
       ]
