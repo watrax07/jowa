@@ -9,7 +9,7 @@
         { "nombre": "Amber Labdanum",    "descripcion": "Jo Malone London 100ml", "precio": 2100, "precioOriginal": 3300, "vendido": false, "aparece": true, "imagen": "img/amber-labdanum.jpg" },
         { "nombre": "Acqua di Gio",      "descripcion": "Parfum 100ml",           "precio": 1375, "precioOriginal": 1800, "vendido": false, "aparece": true, "imagen": "img/acqua-di-gio.jpg" },
         { "nombre": "Stronger with you", "descripcion": "Parfum 100ml",           "precio": 1325, "precioOriginal": 1920, "vendido": false, "aparece": true, "imagen": "img/stronger-with-you.jpg" },
-        { "nombre": "Azzaro",            "descripcion": "Wanted 100ml",           "precio": 800,  "precioOriginal": 1400, "vendido": false, "aparece": true, "imagen": "img/azzaro-wanted.jpg" },
+        { "nombre": "Azzaro",            "descripcion": "Wanted 100ml",           "precio": 800,  "precioOriginal": 1400, "vendido": true, "aparece": true, "imagen": "img/azzaro-wanted.jpg" },
         { "nombre": "Phantom",           "descripcion": "Parfum 100ml",           "precio": 950,  "precioOriginal": 1500, "vendido": false, "aparece": true, "imagen": "img/phantom-parfum.jpg" },
         { "nombre": "Phantom",           "descripcion": "Intense 100ml",          "precio": 1000, "precioOriginal": 2300, "vendido": true, "aparece": true, "imagen": "img/phantom-intense.jpg" },
         { "nombre": "Versace Eros",      "descripcion": "EDT 100ml",              "precio": 900,  "precioOriginal": 1200, "vendido": false, "aparece": true, "imagen": "img/versace-eros-edt.jpg" },
