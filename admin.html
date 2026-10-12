@@ -12,6 +12,7 @@
       --panel: #161616;
       --borde: #3a3220;
       --oro: #f3c843;
+      --rosa: #ff8fc4;
       --texto: #f2efe6;
       --tenue: #a9a392;
       --error: #ff6b6b;
@@ -43,12 +44,6 @@
       margin: 0 0 4px;
     }
 
-    h3 {
-      font-size: 1rem;
-      margin: 0;
-      overflow-wrap: anywhere;
-    }
-
     .sub {
       color: var(--tenue);
       margin: 0 0 20px;
@@ -60,6 +55,12 @@
       margin: 8px 0 0;
     }
 
+    .totales {
+      margin: 0 0 12px;
+      color: var(--tenue);
+      font-size: .9rem;
+    }
+
     .bloque {
       background: var(--panel);
       border: 1px solid var(--borde);
@@ -68,11 +69,41 @@
       margin-bottom: 18px;
     }
 
-    summary {
+    .bloque>summary {
       cursor: pointer;
       color: var(--oro);
       font-weight: 600;
       margin-bottom: 12px;
+    }
+
+    .bloque:not([open])>summary {
+      margin-bottom: 0;
+    }
+
+    /* Secciones con color según su estilo */
+    .seccion {
+      border-top: 4px solid var(--oro);
+    }
+
+    .seccion.sec-rosa {
+      border-top-color: var(--rosa);
+    }
+
+    .seccion.sec-rosa>summary {
+      color: var(--rosa);
+    }
+
+    .resumen-seccion {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 12px;
+    }
+
+    .resumen-seccion .conteo {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px;
     }
 
     .fila {
@@ -194,34 +225,173 @@
       margin-top: 12px;
     }
 
-    .tarjeta-prod {
+    .herramientas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    /* Insignias de estado */
+    .insignia {
+      display: inline-block;
+      padding: 1px 9px;
+      border-radius: 999px;
+      border: 1px solid currentColor;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .insignia.disponible {
+      color: var(--ok);
+      background: rgba(107, 214, 138, .1);
+    }
+
+    .insignia.vendido {
+      color: var(--error);
+      background: rgba(255, 107, 107, .12);
+    }
+
+    .insignia.oculto {
+      color: var(--tenue);
+      background: rgba(169, 163, 146, .1);
+    }
+
+    /* Producto desplegable */
+    .producto {
+      border: 1px solid var(--borde);
+      border-left: 4px solid var(--ok);
+      border-radius: 12px;
+      background: #111;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .producto.vendido {
+      border-left-color: var(--error);
+      background: #170f0f;
+    }
+
+    .producto.oculto:not(.vendido) {
+      border-left-color: var(--tenue);
+    }
+
+    .producto>summary {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0;
+      padding: 10px 12px;
+      list-style: none;
+      cursor: pointer;
+      color: var(--texto);
+    }
+
+    .producto>summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .producto>summary::after {
+      content: "▾";
+      margin-inline-start: auto;
+      color: var(--oro);
+      font-size: 1.1rem;
+      transition: transform .15s;
+    }
+
+    .producto[open]>summary::after {
+      transform: rotate(180deg);
+    }
+
+    .producto>summary:hover {
+      background: rgba(243, 200, 67, .06);
+    }
+
+    .resumen-foto {
+      display: grid;
+      flex: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      background: #222;
+      overflow: hidden;
+    }
+
+    .resumen-foto img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .resumen-foto img[hidden] {
+      display: none;
+    }
+
+    .producto.vendido .resumen-foto img {
+      filter: grayscale(1);
+      opacity: .55;
+    }
+
+    .resumen-info {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .resumen-nombre {
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .producto.vendido .resumen-nombre {
+      color: var(--tenue);
+      text-decoration: line-through;
+    }
+
+    .resumen-precio {
+      color: var(--oro);
+      font-size: .9rem;
+    }
+
+    .producto.vendido .resumen-precio {
+      color: var(--tenue);
+    }
+
+    .insignias {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: flex-end;
+    }
+
+    .producto-cuerpo {
       display: grid;
       grid-template-columns: 110px 1fr;
       gap: 14px;
-      border: 1px solid var(--borde);
-      border-radius: 12px;
       padding: 12px;
-      margin-bottom: 12px;
-      background: #111;
+      border-top: 1px solid var(--borde);
     }
 
-    .tarjeta-prod>div {
+    .producto-cuerpo>div {
       min-width: 0;
-    }
-
-    .cabecera-prod {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
     }
 
     .botones-prod {
       display: flex;
-      gap: 6px;
       flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .botones-prod.fin {
+      justify-content: flex-end;
+      margin-bottom: 10px;
     }
 
     .mini-caja {
@@ -257,6 +427,18 @@
       flex-wrap: wrap;
       gap: 8px 22px;
       margin-top: 4px;
+    }
+
+    /* Preguntas frecuentes */
+    .tarjeta-prod {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      border: 1px solid var(--borde);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 12px;
+      background: #111;
     }
 
     .sr-only {
@@ -304,7 +486,7 @@
     }
 
     @media (max-width: 640px) {
-      .tarjeta-prod {
+      .producto-cuerpo {
         grid-template-columns: 1fr;
       }
 
@@ -315,6 +497,16 @@
 
       .campo.corto {
         max-width: none;
+      }
+
+      .producto>summary {
+        flex-wrap: wrap;
+      }
+
+      .insignias {
+        order: 3;
+        flex-basis: 100%;
+        justify-content: flex-start;
       }
     }
   </style>
@@ -376,13 +568,17 @@
     const $ = (id) => document.getElementById(id);
     const esVerdadero = (v) => v === true || v === 'true';
     const esFalso = (v) => v === false || v === 'false';
+    const esDisponible = (p) => !esVerdadero(p.vendido) && !esFalso(p.aparece);
 
     const cfg = { owner: '', repo: '', branch: 'main', token: '' };
     let datos = null;
     let shaActual = null;
     let sinGuardar = false;
     let ocupado = false;
+    let faqAbierta = false;
     const imagenesPendientes = new Map(); // ruta -> { base64, url, subida }
+    const productosAbiertos = new WeakSet(); // para conservar los desplegables abiertos al redibujar
+    const seccionesCerradas = new WeakSet();
 
     /* ---------- Almacenamiento local ---------- */
     function leerAlmacen(clave) {
@@ -410,6 +606,8 @@
       }
       return nodo;
     }
+
+    const insignia = (texto, tipo) => el('span', { class: `insignia ${tipo}` }, texto);
 
     function estado(mensaje, tipo = '') {
       const nodo = $('estado');
@@ -566,7 +764,7 @@
       return el('label', { class: 'campo' + (corto ? ' corto' : '') }, el('span', {}, etiqueta), entrada);
     }
 
-    function campoNum(etiqueta, obj, clave, opcional = false) {
+    function campoNum(etiqueta, obj, clave, opcional = false, alCambiar) {
       const entrada = el('input', { type: 'number', min: '0', step: 'any', inputmode: 'decimal' });
       entrada.value = obj[clave] ?? '';
       entrada.addEventListener('input', () => {
@@ -578,6 +776,7 @@
           obj[clave] = Number(v);
         }
         marcarCambios();
+        if (alCambiar) alCambiar();
       });
       return el('label', { class: 'campo' }, el('span', {}, etiqueta), entrada);
     }
@@ -607,25 +806,65 @@
       render();
     }
 
+    function actualizarTotales() {
+      const nodo = $('totales');
+      if (!nodo || !datos) return;
+      const prods = todosProductos();
+      const vendidos = prods.filter((p) => esVerdadero(p.vendido)).length;
+      const ocultos = prods.filter((p) => esFalso(p.aparece)).length;
+      const disponibles = prods.filter(esDisponible).length;
+      nodo.textContent = `${prods.length} productos · ${disponibles} disponibles · ${vendidos} vendidos · ${ocultos} ocultos`;
+    }
+
     /* ---------- Interfaz del editor ---------- */
-    function tarjetaProducto(p, lista, i) {
-      const titulo = el('h3', {}, p.nombre || '(sin nombre)');
+    function tarjetaProducto(p, lista, i, alCambiarEstado) {
       const img = el('img', { class: 'mini', alt: 'Vista previa del producto', hidden: true });
       const vacio = el('span', {}, 'Sin foto');
+      const miniatura = el('img', { alt: '', hidden: true });
 
       img.addEventListener('load', () => { img.hidden = false; vacio.hidden = true; });
       img.addEventListener('error', () => { img.hidden = true; vacio.hidden = false; });
+      miniatura.addEventListener('load', () => { miniatura.hidden = false; });
+      miniatura.addEventListener('error', () => { miniatura.hidden = true; });
 
       const mostrar = () => {
         const pendiente = imagenesPendientes.get(p.imagen);
         const origen = pendiente ? pendiente.url : p.imagen;
         if (!origen) {
           img.hidden = true;
+          miniatura.hidden = true;
           vacio.hidden = false;
           return;
         }
         img.src = origen;
+        miniatura.src = origen;
       };
+
+      // Resumen visible con el desplegable cerrado
+      const nombreEl = el('span', { class: 'resumen-nombre' });
+      const precioEl = el('span', { class: 'resumen-precio' });
+      const insignias = el('span', { class: 'insignias' });
+      const detalle = el('details', { class: 'producto', open: productosAbiertos.has(p) });
+
+      const pintar = () => {
+        nombreEl.textContent = p.nombre || '(sin nombre)';
+        const tienePrecio = typeof p.precio === 'number' && Number.isFinite(p.precio);
+        precioEl.textContent = tienePrecio ? `${datos.moneda ?? ''}${p.precio}` : 'Sin precio';
+        const vendido = esVerdadero(p.vendido);
+        const oculto = esFalso(p.aparece);
+        detalle.classList.toggle('vendido', vendido);
+        detalle.classList.toggle('oculto', oculto);
+        insignias.replaceChildren(
+          vendido ? insignia('Vendido', 'vendido') : insignia('Disponible', 'disponible'),
+          ...(oculto ? [insignia('Oculto', 'oculto')] : []));
+      };
+
+      const cambioEstado = () => { pintar(); alCambiarEstado(); };
+
+      detalle.addEventListener('toggle', () => {
+        if (detalle.open) productosAbiertos.add(p);
+        else productosAbiertos.delete(p);
+      });
 
       const campoImg = campoTxt('Ruta de la imagen', p, 'imagen', { alCambiar: mostrar });
       const entradaImg = campoImg.querySelector('input');
@@ -659,54 +898,106 @@
 
       const botonFoto = el('label', { class: 'btn chico' }, 'Cambiar foto', archivo);
 
-      mostrar();
-
-      return el('div', { class: 'tarjeta-prod' },
-        el('div', {}, el('div', { class: 'mini-caja' }, img, vacio), botonFoto),
-        el('div', {},
-          el('div', { class: 'cabecera-prod' }, titulo,
-            el('div', { class: 'botones-prod' },
+      detalle.append(
+        el('summary', {},
+          el('span', { class: 'resumen-foto' }, miniatura),
+          el('span', { class: 'resumen-info' }, nombreEl, precioEl),
+          insignias),
+        el('div', { class: 'producto-cuerpo' },
+          el('div', {}, el('div', { class: 'mini-caja' }, img, vacio), botonFoto),
+          el('div', {},
+            el('div', { class: 'botones-prod fin' },
               el('button', { type: 'button', class: 'btn chico', 'aria-label': 'Subir producto', onclick: () => mover(lista, i, -1) }, '↑'),
               el('button', { type: 'button', class: 'btn chico', 'aria-label': 'Bajar producto', onclick: () => mover(lista, i, 1) }, '↓'),
-              el('button', { type: 'button', class: 'btn chico peligro', onclick: () => eliminar(lista, i, `"${p.nombre || 'este producto'}"`) }, 'Eliminar'))),
-          el('div', { class: 'fila' },
-            campoTxt('Nombre', p, 'nombre', { alCambiar: (v) => { titulo.textContent = v || '(sin nombre)'; } }),
-            campoTxt('Descripción', p, 'descripcion')),
-          el('div', { class: 'fila' },
-            campoNum('Precio de venta', p, 'precio'),
-            campoNum('Precio original (tachado, opcional)', p, 'precioOriginal', true)),
-          el('div', { class: 'fila' }, campoImg),
-          el('div', { class: 'checks' },
-            casilla('Vendido', esVerdadero(p.vendido), (v) => { p.vendido = v; }),
-            casilla('Aparece en la página', !esFalso(p.aparece), (v) => { p.aparece = v; }))));
+              el('button', { type: 'button', class: 'btn chico peligro', onclick: () => eliminar(lista, i, `"${p.nombre || 'este producto'}"`) }, 'Eliminar')),
+            el('div', { class: 'fila' },
+              campoTxt('Nombre', p, 'nombre', { alCambiar: pintar }),
+              campoTxt('Descripción', p, 'descripcion')),
+            el('div', { class: 'fila' },
+              campoNum('Precio de venta', p, 'precio', false, cambioEstado),
+              campoNum('Precio original (tachado, opcional)', p, 'precioOriginal', true)),
+            el('div', { class: 'fila' }, campoImg),
+            el('div', { class: 'checks' },
+              casilla('Vendido', esVerdadero(p.vendido), (v) => { p.vendido = v; cambioEstado(); }),
+              casilla('Aparece en la página', !esFalso(p.aparece), (v) => { p.aparece = v; cambioEstado(); })))));
+
+      pintar();
+      mostrar();
+      return detalle;
     }
+
+    const claseEstilo = (e) => 'sec-' + String(e || 'oscuro').replace(/[^A-Za-z0-9_-]/g, '');
 
     function seccionUI(s, i) {
       const opciones = ['oscuro', 'rosa'];
       if (s.estilo && !opciones.includes(s.estilo)) opciones.push(s.estilo);
       const selector = el('select', {}, opciones.map((o) => el('option', { value: o }, o)));
       selector.value = s.estilo ?? opciones[0];
-      selector.addEventListener('change', () => { s.estilo = selector.value; marcarCambios(); });
+
+      const tituloEl = el('span', {});
+      const conteoEl = el('span', { class: 'conteo' });
+      const detalle = el('details', { class: `bloque seccion ${claseEstilo(s.estilo)}`, open: !seccionesCerradas.has(s) });
+
+      const pintar = () => {
+        tituloEl.textContent = s.titulo || 'Sección';
+        const vendidos = s.productos.filter((p) => esVerdadero(p.vendido)).length;
+        const ocultos = s.productos.filter((p) => esFalso(p.aparece)).length;
+        const disponibles = s.productos.filter(esDisponible).length;
+        conteoEl.replaceChildren(...[
+          insignia(`${disponibles} disponibles`, 'disponible'),
+          vendidos ? insignia(`${vendidos} vendidos`, 'vendido') : null,
+          ocultos ? insignia(`${ocultos} ocultos`, 'oculto') : null
+        ].filter(Boolean));
+      };
+
+      const alCambiarEstado = () => { pintar(); actualizarTotales(); };
+
+      detalle.addEventListener('toggle', () => {
+        if (detalle.open) seccionesCerradas.delete(s);
+        else seccionesCerradas.add(s);
+      });
+
+      selector.addEventListener('change', () => {
+        s.estilo = selector.value;
+        detalle.className = `bloque seccion ${claseEstilo(s.estilo)}`;
+        marcarCambios();
+      });
 
       const etiquetaEstilo = el('label', { class: 'campo' }, el('span', {}, 'Estilo'), selector);
 
-      return el('details', { class: 'bloque', open: true },
-        el('summary', {}, `${s.titulo || 'Sección'} · ${s.estilo || '-'} · ${s.productos.length} productos`),
-        el('div', { class: 'fila' }, campoTxt('Título de la sección', s, 'titulo'), etiquetaEstilo),
-        s.productos.map((p, j) => tarjetaProducto(p, s.productos, j)),
+      const listaProductos = el('div', {},
+        s.productos.map((p, j) => tarjetaProducto(p, s.productos, j, alCambiarEstado)));
+
+      const cambiarTodos = (abrir) => {
+        listaProductos.querySelectorAll('details.producto').forEach((d) => { d.open = abrir; });
+      };
+
+      detalle.append(
+        el('summary', { class: 'resumen-seccion' }, tituloEl, conteoEl),
+        el('div', { class: 'fila' }, campoTxt('Título de la sección', s, 'titulo', { alCambiar: pintar }), etiquetaEstilo),
+        el('div', { class: 'herramientas' },
+          el('button', { type: 'button', class: 'btn chico', onclick: () => cambiarTodos(true) }, 'Expandir todos'),
+          el('button', { type: 'button', class: 'btn chico', onclick: () => cambiarTodos(false) }, 'Contraer todos')),
+        listaProductos,
         el('div', { class: 'acciones' },
           el('button', {
             type: 'button', class: 'btn', onclick: () => {
-              s.productos.push({ nombre: '', descripcion: '', precio: '', vendido: false, aparece: true, imagen: '' });
+              const nuevo = { nombre: '', descripcion: '', precio: '', vendido: false, aparece: true, imagen: '' };
+              s.productos.push(nuevo);
+              productosAbiertos.add(nuevo);
               marcarCambios();
               render();
             }
           }, '+ Añadir producto'),
           el('button', { type: 'button', class: 'btn peligro', onclick: () => eliminar(datos.secciones, i, `la sección "${s.titulo || i + 1}" con todos sus productos`) }, 'Eliminar sección')));
+
+      pintar();
+      return detalle;
     }
 
     function bloqueGeneral() {
       return el('div', { class: 'bloque' },
+        el('p', { class: 'totales', id: 'totales' }),
         el('div', { class: 'fila' }, campoTxt('Símbolo de moneda', datos, 'moneda', { corto: true })),
         el('div', { class: 'acciones' },
           el('button', {
@@ -720,9 +1011,9 @@
 
     function bloqueFaq() {
       const lista = datos.preguntas;
-      return el('details', { class: 'bloque', open: true },
+      const detalle = el('details', { class: 'bloque', open: faqAbierta },
         el('summary', {}, `Preguntas frecuentes (${lista.length})`),
-        lista.map((q, i) => el('div', { class: 'tarjeta-prod', style: 'grid-template-columns:1fr' },
+        lista.map((q, i) => el('div', { class: 'tarjeta-prod' },
           campoTxt('Pregunta', q, 'pregunta'),
           campoTxt('Respuesta', q, 'respuesta', { area: true }),
           el('div', { class: 'botones-prod' },
@@ -733,10 +1024,13 @@
           el('button', {
             type: 'button', class: 'btn', onclick: () => {
               lista.push({ pregunta: '', respuesta: '' });
+              faqAbierta = true;
               marcarCambios();
               render();
             }
           }, '+ Añadir pregunta')));
+      detalle.addEventListener('toggle', () => { faqAbierta = detalle.open; });
+      return detalle;
     }
 
     function render() {
@@ -746,6 +1040,7 @@
         bloqueGeneral(),
         ...datos.secciones.map(seccionUI),
         bloqueFaq());
+      actualizarTotales();
       window.scrollTo(0, y);
     }
 
