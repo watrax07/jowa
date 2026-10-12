@@ -5,27 +5,27 @@
       "titulo": "Perfumes",
       "estilo": "oscuro",
       "productos": [
-        { "nombre": "Bleu De Chanel",    "descripcion": "Eau de Parfum 100ml",    "precio": 2200, "precioOriginal": 3600, "vendido": false, "aparece": true, "imagen": "img/bleu-de-chanel.jpg" },
-        { "nombre": "Amber Labdanum",    "descripcion": "Jo Malone London 100ml", "precio": 2100, "precioOriginal": 3300, "vendido": false, "aparece": true, "imagen": "img/amber-labdanum.jpg" },
-        { "nombre": "Acqua di Gio",      "descripcion": "Parfum 100ml",           "precio": 1375, "precioOriginal": 1800, "vendido": false, "aparece": true, "imagen": "img/acqua-di-gio.jpg" },
-        { "nombre": "Stronger with you", "descripcion": "Parfum 100ml",           "precio": 1325, "precioOriginal": 1920, "vendido": false, "aparece": true, "imagen": "img/stronger-with-you.jpg" },
-        { "nombre": "Azzaro",            "descripcion": "Wanted 100ml",           "precio": 800,  "precioOriginal": 1400, "vendido": true, "aparece": true, "imagen": "img/azzaro-wanted.jpg" },
-        { "nombre": "Phantom",           "descripcion": "Parfum 100ml",           "precio": 950,  "precioOriginal": 1500, "vendido": false, "aparece": true, "imagen": "img/phantom-parfum.jpg" },
-        { "nombre": "Phantom",           "descripcion": "Intense 100ml",          "precio": 1000, "precioOriginal": 2300, "vendido": true, "aparece": true, "imagen": "img/phantom-intense.jpg" },
-        { "nombre": "Versace Eros",      "descripcion": "EDT 100ml",              "precio": 900,  "precioOriginal": 1200, "vendido": false, "aparece": true, "imagen": "img/versace-eros-edt.jpg" },
-        { "nombre": "Versace Eros",      "descripcion": "Najim 100ml",            "precio": 1125, "precioOriginal": 2000, "vendido": false, "aparece": true, "imagen": "img/versace-eros-najim.jpg" }
+        { "nombre": "Bleu De Chanel", "descripcion": "Eau de Parfum 100ml", "precio": 2200, "precioOriginal": 3600, "vendido": false, "aparece": true, "imagen": "img/bleu-de-chanel.jpg" },
+        { "nombre": "Amber Labdanum", "descripcion": "Jo Malone London 100ml", "precio": 2100, "precioOriginal": 3300, "vendido": false, "aparece": true, "imagen": "img/amber-labdanum.jpg" },
+        { "nombre": "Acqua di Gio", "descripcion": "Parfum 100ml", "precio": 1375, "precioOriginal": 1800, "vendido": false, "aparece": true, "imagen": "img/acqua-di-gio.jpg" },
+        { "nombre": "Stronger with you", "descripcion": "Parfum 100ml", "precio": 1325, "precioOriginal": 1920, "vendido": true, "aparece": true, "imagen": "img/stronger-with-you.jpg" },
+        { "nombre": "Azzaro", "descripcion": "Wanted 100ml", "precio": 800, "precioOriginal": 1400, "vendido": true, "aparece": true, "imagen": "img/azzaro-wanted.jpg" },
+        { "nombre": "Phantom", "descripcion": "Parfum 100ml", "precio": 950, "precioOriginal": 1500, "vendido": false, "aparece": true, "imagen": "img/phantom-parfum.jpg" },
+        { "nombre": "Phantom", "descripcion": "Intense 100ml", "precio": 1000, "precioOriginal": 2300, "vendido": true, "aparece": true, "imagen": "img/phantom-intense.jpg" },
+        { "nombre": "Versace Eros", "descripcion": "EDT 100ml", "precio": 900, "precioOriginal": 1200, "vendido": false, "aparece": true, "imagen": "img/versace-eros-edt.jpg" },
+        { "nombre": "Versace Eros", "descripcion": "Najim 100ml", "precio": 1125, "precioOriginal": 2000, "vendido": false, "aparece": true, "imagen": "img/versace-eros-najim.jpg" }
       ]
     },
     {
       "titulo": "Perfumes",
       "estilo": "rosa",
       "productos": [
-        { "nombre": "Million Gold",       "descripcion": "For Her 80ml",          "precio": 1100, "precioOriginal": 1600, "vendido": false, "aparece": true, "imagen": "img/million-gold.jpg" },
-        { "nombre": "La Vie Est Belle",   "descripcion": "EDP 100ml",             "precio": 1250, "precioOriginal": 1840, "vendido": true, "aparece": true, "imagen": "img/la-vie-est-belle.jpg" },
+        { "nombre": "Million Gold", "descripcion": "For Her 80ml", "precio": 1100, "precioOriginal": 1600, "vendido": false, "aparece": true, "imagen": "img/million-gold.jpg" },
+        { "nombre": "La Vie Est Belle", "descripcion": "EDP 100ml", "precio": 1250, "precioOriginal": 1840, "vendido": true, "aparece": true, "imagen": "img/la-vie-est-belle.jpg" },
         { "nombre": "Purple Melancholia", "descripcion": "Valentino Donna 100ml", "precio": 1275, "precioOriginal": 2000, "vendido": true, "aparece": true, "imagen": "img/purple-melancholia.jpg" },
-        { "nombre": "Light Blue",         "descripcion": "Dolce & Gabbana 100ml", "precio": 750,  "precioOriginal": 1800, "vendido": false, "aparece": true, "imagen": "img/light-blue.jpg" },
-        { "nombre": "Good Girl",          "descripcion": "CH Blush Elixir 80ml",  "precio": 1400, "precioOriginal": 2000, "vendido": true, "aparece": true, "imagen": "img/good-girl.jpg" },
-        { "nombre": "La Bomba",           "descripcion": "Carolina Herrera 80ml", "precio": 1525, "precioOriginal": 3000, "vendido": true, "aparece": true, "imagen": "img/la-bomba.jpg" }
+        { "nombre": "Light Blue", "descripcion": "Dolce & Gabbana 100ml", "precio": 750, "precioOriginal": 1800, "vendido": false, "aparece": true, "imagen": "img/light-blue.jpg" },
+        { "nombre": "Good Girl", "descripcion": "CH Blush Elixir 80ml", "precio": 1400, "precioOriginal": 2000, "vendido": true, "aparece": true, "imagen": "img/good-girl.jpg" },
+        { "nombre": "La Bomba", "descripcion": "Carolina Herrera 80ml", "precio": 1525, "precioOriginal": 3000, "vendido": true, "aparece": true, "imagen": "img/la-bomba.jpg" }
       ]
     }
   ],
