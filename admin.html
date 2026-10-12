@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin · JW KICKS</title>
+  <style>
+    :root {
+      --fondo: #0b0b0b;
+      --panel: #161616;
+      --borde: #3a3220;
+      --oro: #f3c843;
+      --texto: #f2efe6;
+      --tenue: #a9a392;
+      --error: #ff6b6b;
+      --ok: #6bd68a;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--fondo);
+      color: var(--texto);
+      font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 20px 16px 130px;
+    }
+
+    h1 {
+      color: var(--oro);
+      font-size: 1.6rem;
+      margin: 0 0 4px;
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .sub {
+      color: var(--tenue);
+      margin: 0 0 20px;
+    }
+
+    .ayuda {
+      color: var(--tenue);
+      font-size: .85rem;
+      margin: 8px 0 0;
+    }
+
+    .bloque {
+      background: var(--panel);
+      border: 1px solid var(--borde);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+
+    summary {
+      cursor: pointer;
+      color: var(--oro);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .fila {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .campo {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .campo>span {
+      font-size: .8rem;
+      color: var(--tenue);
+    }
+
+    .campo.corto {
+      max-width: 220px;
+    }
+
+    input:not([type="checkbox"]):not([type="file"]),
+    select,
+    textarea {
+      width: 100%;
+      padding: 9px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--borde);
+      background: #0f0f0f;
+      color: var(--texto);
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    :focus-visible,
+    .btn:focus-within {
+      outline: 2px solid var(--oro);
+      outline-offset: 2px;
+    }
+
+    .casilla {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .casilla input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--oro);
+    }
+
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--oro);
+      background: transparent;
+      color: var(--oro);
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .15s, color .15s, opacity .15s;
+    }
+
+    .btn:hover {
+      background: rgba(243, 200, 67, .12);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .btn.primario {
+      background: var(--oro);
+      color: #111;
+    }
+
+    .btn.primario:hover:not(:disabled) {
+      background: #ffd95e;
+    }
+
+    .btn.peligro {
+      border-color: var(--error);
+      color: var(--error);
+    }
+
+    .btn.peligro:hover {
+      background: rgba(255, 107, 107, .12);
+    }
+
+    .btn.chico {
+      padding: 4px 10px;
+      font-size: .9rem;
+    }
+
+    .acciones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .tarjeta-prod {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 14px;
+      border: 1px solid var(--borde);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 12px;
+      background: #111;
+    }
+
+    .tarjeta-prod>div {
+      min-width: 0;
+    }
+
+    .cabecera-prod {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .botones-prod {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .mini-caja {
+      display: grid;
+      place-items: center;
+      width: 110px;
+      height: 110px;
+      border: 1px dashed var(--borde);
+      border-radius: 8px;
+      color: var(--tenue);
+      font-size: .75rem;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .mini-caja>* {
+      grid-area: 1 / 1;
+    }
+
+    .mini {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #222;
+    }
+
+    .mini[hidden] {
+      display: none;
+    }
+
+    .checks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+      margin-top: 4px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    .barra {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 16px;
+      background: rgba(0, 0, 0, .94);
+      border-top: 1px solid var(--borde);
+    }
+
+    #estado {
+      margin: 0;
+      flex: 1 1 260px;
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    #estado.ok {
+      color: var(--ok);
+    }
+
+    #estado.error {
+      color: var(--error);
+    }
+
+    #pendiente {
+      color: var(--oro);
+      font-size: .85rem;
+    }
+
+    @media (max-width: 640px) {
+      .tarjeta-prod {
+        grid-template-columns: 1fr;
+      }
+
+      .mini-caja {
+        width: 100%;
+        height: 160px;
+      }
+
+      .campo.corto {
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>Admin · JW KICKS</h1>
+    <p class="sub">Edita el catálogo y publícalo directo en GitHub (se hace un commit por cada foto nueva y otro de
+      <code>productos.json</code>).</p>
+
+    <details class="bloque" id="conexion" open>
+      <summary>Conexión con GitHub</summary>
+      <form id="form-conexion" autocomplete="off">
+        <div class="fila">
+          <label class="campo"><span>Usuario u organización</span>
+            <input id="cfg-owner" type="text" required pattern="[A-Za-z0-9_.\-]+" placeholder="tu-usuario"></label>
+          <label class="campo"><span>Repositorio</span>
+            <input id="cfg-repo" type="text" required pattern="[A-Za-z0-9_.\-]+" placeholder="nombre-del-repo"></label>
+          <label class="campo"><span>Rama</span>
+            <input id="cfg-branch" type="text" required value="main"></label>
+        </div>
+        <div class="fila">
+          <label class="campo"><span>Token de acceso de GitHub</span>
+            <input id="cfg-token" type="password" required autocomplete="off" placeholder="github_pat_..."></label>
+        </div>
+        <label class="casilla"><input id="cfg-recordar" type="checkbox"><span>Recordar el token en este
+            navegador</span></label>
+        <p class="ayuda">Crea un token en GitHub → Settings → Developer settings → Personal access tokens →
+          Fine-grained tokens. Elige solo este repositorio y el permiso <strong>Contents: Read and write</strong>.
+          Ponle fecha de vencimiento. El token se queda en tu navegador y solo se envía a api.github.com. No marques
+          "Recordar" en un equipo compartido.</p>
+        <div class="acciones">
+          <button type="submit" class="btn primario" id="conectar">Conectar y cargar catálogo</button>
+          <button type="button" class="btn" id="olvidar">Olvidar token</button>
+        </div>
+      </form>
+    </details>
+
+    <div id="editor" hidden></div>
+  </main>
+
+  <div class="barra">
+    <p id="estado" role="status" aria-live="polite">Conéctate a GitHub para empezar.</p>
+    <span id="pendiente" hidden>● Cambios sin publicar</span>
+    <button type="button" class="btn primario" id="guardar" disabled>Guardar y publicar</button>
+  </div>
+
+  <script>
+    'use strict';
+
+    const API = 'https://api.github.com';
+    const ARCHIVO = 'productos.json';
+    const CLAVE_CFG = 'jw-admin-cfg';
+    const CLAVE_TOKEN = 'jw-admin-token';
+    const MAX_FOTO = 5 * 1024 * 1024;
+    const EXTENSIONES = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
+
+    const $ = (id) => document.getElementById(id);
+    const esVerdadero = (v) => v === true || v === 'true';
+    const esFalso = (v) => v === false || v === 'false';
+
+    const cfg = { owner: '', repo: '', branch: 'main', token: '' };
+    let datos = null;
+    let shaActual = null;
+    let sinGuardar = false;
+    let ocupado = false;
+    const imagenesPendientes = new Map(); // ruta -> { base64, url, subida }
+
+    /* ---------- Almacenamiento local ---------- */
+    function leerAlmacen(clave) {
+      try { return localStorage.getItem(clave); } catch { return null; }
+    }
+
+    function escribirAlmacen(clave, valor) {
+      try {
+        if (valor == null) localStorage.removeItem(clave);
+        else localStorage.setItem(clave, valor);
+      } catch { /* almacenamiento no disponible */ }
+    }
+
+    /* ---------- Utilidades de DOM ---------- */
+    function el(tag, props = {}, ...hijos) {
+      const nodo = document.createElement(tag);
+      for (const [k, v] of Object.entries(props)) {
+        if (k === 'class') nodo.className = v;
+        else if (k.startsWith('on')) nodo.addEventListener(k.slice(2), v);
+        else if (v === true) nodo.setAttribute(k, '');
+        else if (v !== false && v != null) nodo.setAttribute(k, v);
+      }
+      for (const h of hijos.flat()) {
+        if (h !== null && h !== undefined && h !== false) nodo.append(h);
+      }
+      return nodo;
+    }
+
+    function estado(mensaje, tipo = '') {
+      const nodo = $('estado');
+      nodo.textContent = mensaje;
+      nodo.className = tipo;
+    }
+
+    function marcarCambios() {
+      sinGuardar = true;
+      $('pendiente').hidden = false;
+    }
+
+    function fijarOcupado(valor) {
+      ocupado = valor;
+      $('guardar').disabled = valor || !datos;
+      $('conectar').disabled = valor;
+    }
+
+    /* ---------- Base64 con UTF-8 ---------- */
+    function base64ATexto(b64) {
+      const bin = atob(b64.replace(/\s/g, ''));
+      const bytes = Uint8Array.from(bin, (c) => c.charCodeAt(0));
+      return new TextDecoder('utf-8').decode(bytes);
+    }
+
+    function textoABase64(texto) {
+      const bytes = new TextEncoder().encode(texto);
+      let bin = '';
+      const trozo = 0x8000;
+      for (let i = 0; i < bytes.length; i += trozo) {
+        bin += String.fromCharCode(...bytes.subarray(i, i + trozo));
+      }
+      return btoa(bin);
+    }
+
+    function archivoABase64(archivo) {
+      return new Promise((resolver, rechazar) => {
+        const lector = new FileReader();
+        lector.onload = () => resolver(String(lector.result).split(',')[1] || '');
+        lector.onerror = () => rechazar(new Error('No se pudo leer la foto.'));
+        lector.readAsDataURL(archivo);
+      });
+    }
+
+    const slug = (s) => String(s || '')
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 50) || 'foto';
+
+    /* ---------- API de GitHub ---------- */
+    const seg = (s) => encodeURIComponent(s);
+
+    function rutaContenido(ruta) {
+      return `/repos/${seg(cfg.owner)}/${seg(cfg.repo)}/contents/${ruta.split('/').map(seg).join('/')}`;
+    }
+
+    async function gh(ruta, opciones = {}) {
+      const cabeceras = {
+        Accept: 'application/vnd.github+json',
+        Authorization: `Bearer ${cfg.token}`,
+        'X-GitHub-Api-Version': '2022-11-28'
+      };
+      if (opciones.body) cabeceras['Content-Type'] = 'application/json';
+      const r = await fetch(API + ruta, { ...opciones, headers: cabeceras });
+      if (!r.ok) {
+        let detalle = '';
+        try { detalle = (await r.json()).message || ''; } catch { /* sin cuerpo JSON */ }
+        const error = new Error(detalle || `HTTP ${r.status}`);
+        error.status = r.status;
+        throw error;
+      }
+      return r.json();
+    }
+
+    function mensajeError(err) {
+      if (err instanceof TypeError) return 'No se pudo conectar con GitHub. Revisa tu conexión.';
+      switch (err.status) {
+        case 401: return 'El token no es válido o está vencido.';
+        case 403: return 'Sin permiso (el token necesita Contents: Read and write) o límite de GitHub alcanzado.';
+        case 404: return 'No se encontró el repositorio, la rama o productos.json (o el token no tiene acceso a este repositorio).';
+        case 409: return 'productos.json cambió en GitHub desde que lo cargaste. Pulsa "Conectar y cargar catálogo" para traer la versión nueva (esto descartará los cambios sin publicar).';
+        default: return `Error: ${err.message}`;
+      }
+    }
+
+    /* ---------- Serialización (mantiene un producto por línea) ---------- */
+    function lineaProducto(p) {
+      const partes = Object.entries(p)
+        .filter(([k, v]) => !(k === 'precioOriginal' && v === ''))
+        .map(([k, v]) => `${JSON.stringify(k)}: ${JSON.stringify(v)}`);
+      return `{ ${partes.join(', ')} }`;
+    }
+
+    function serializarSecciones(secciones) {
+      if (!secciones.length) return '[]';
+      const items = secciones.map((s) => {
+        const campos = Object.entries(s).map(([k, v]) => {
+          if (k === 'productos') {
+            if (!v.length) return `      "productos": []`;
+            return `      "productos": [\n${v.map((p) => `        ${lineaProducto(p)}`).join(',\n')}\n      ]`;
+          }
+          return `      ${JSON.stringify(k)}: ${JSON.stringify(v)}`;
+        });
+        return `    {\n${campos.join(',\n')}\n    }`;
+      });
+      return `[\n${items.join(',\n')}\n  ]`;
+    }
+
+    function serializar(d) {
+      const partes = Object.entries(d).map(([k, v]) => {
+        const valor = (k === 'secciones' && Array.isArray(v))
+          ? serializarSecciones(v)
+          : JSON.stringify(v, null, 2).replace(/\n/g, '\n  ');
+        return `  ${JSON.stringify(k)}: ${valor}`;
+      });
+      return `{\n${partes.join(',\n')}\n}\n`;
+    }
+
+    /* ---------- Validación ---------- */
+    function todosProductos() {
+      return datos.secciones.flatMap((s) => s.productos);
+    }
+
+    function validar() {
+      for (const [i, s] of datos.secciones.entries()) {
+        for (const [j, p] of s.productos.entries()) {
+          const donde = `Sección ${i + 1}, producto ${j + 1}`;
+          if (!String(p.nombre ?? '').trim()) return `${donde}: falta el nombre.`;
+          if (typeof p.precio !== 'number' || !Number.isFinite(p.precio) || p.precio < 0) {
+            return `${donde} (${p.nombre}): el precio no es válido.`;
+          }
+          if (p.precioOriginal !== undefined && p.precioOriginal !== '' &&
+            (typeof p.precioOriginal !== 'number' || !Number.isFinite(p.precioOriginal) || p.precioOriginal < 0)) {
+            return `${donde} (${p.nombre}): el precio original no es válido.`;
+          }
+        }
+      }
+      for (const [i, q] of (datos.preguntas || []).entries()) {
+        if (!String(q.pregunta ?? '').trim() || !String(q.respuesta ?? '').trim()) {
+          return `Pregunta frecuente ${i + 1}: falta la pregunta o la respuesta.`;
+        }
+      }
+      return '';
+    }
+
+    /* ---------- Campos reutilizables ---------- */
+    function campoTxt(etiqueta, obj, clave, { area = false, corto = false, alCambiar } = {}) {
+      const entrada = area ? el('textarea', { rows: 4 }) : el('input', { type: 'text' });
+      entrada.value = obj[clave] ?? '';
+      entrada.addEventListener('input', () => {
+        obj[clave] = entrada.value;
+        marcarCambios();
+        if (alCambiar) alCambiar(entrada.value);
+      });
+      return el('label', { class: 'campo' + (corto ? ' corto' : '') }, el('span', {}, etiqueta), entrada);
+    }
+
+    function campoNum(etiqueta, obj, clave, opcional = false) {
+      const entrada = el('input', { type: 'number', min: '0', step: 'any', inputmode: 'decimal' });
+      entrada.value = obj[clave] ?? '';
+      entrada.addEventListener('input', () => {
+        const v = entrada.value;
+        if (v === '') {
+          if (opcional) delete obj[clave];
+          else obj[clave] = '';
+        } else {
+          obj[clave] = Number(v);
+        }
+        marcarCambios();
+      });
+      return el('label', { class: 'campo' }, el('span', {}, etiqueta), entrada);
+    }
+
+    function casilla(etiqueta, marcado, alCambiar) {
+      const c = el('input', { type: 'checkbox' });
+      c.checked = marcado;
+      c.addEventListener('change', () => {
+        alCambiar(c.checked);
+        marcarCambios();
+      });
+      return el('label', { class: 'casilla' }, c, el('span', {}, etiqueta));
+    }
+
+    function mover(lista, i, d) {
+      const j = i + d;
+      if (j < 0 || j >= lista.length) return;
+      [lista[i], lista[j]] = [lista[j], lista[i]];
+      marcarCambios();
+      render();
+    }
+
+    function eliminar(lista, i, descripcion) {
+      if (!confirm(`¿Eliminar ${descripcion}?`)) return;
+      lista.splice(i, 1);
+      marcarCambios();
+      render();
+    }
+
+    /* ---------- Interfaz del editor ---------- */
+    function tarjetaProducto(p, lista, i) {
+      const titulo = el('h3', {}, p.nombre || '(sin nombre)');
+      const img = el('img', { class: 'mini', alt: 'Vista previa del producto', hidden: true });
+      const vacio = el('span', {}, 'Sin foto');
+
+      img.addEventListener('load', () => { img.hidden = false; vacio.hidden = true; });
+      img.addEventListener('error', () => { img.hidden = true; vacio.hidden = false; });
+
+      const mostrar = () => {
+        const pendiente = imagenesPendientes.get(p.imagen);
+        const origen = pendiente ? pendiente.url : p.imagen;
+        if (!origen) {
+          img.hidden = true;
+          vacio.hidden = false;
+          return;
+        }
+        img.src = origen;
+      };
+
+      const campoImg = campoTxt('Ruta de la imagen', p, 'imagen', { alCambiar: mostrar });
+      const entradaImg = campoImg.querySelector('input');
+
+      const archivo = el('input', { type: 'file', accept: 'image/jpeg,image/png,image/webp', class: 'sr-only' });
+      archivo.addEventListener('change', async () => {
+        const foto = archivo.files && archivo.files[0];
+        archivo.value = '';
+        if (!foto) return;
+        const ext = EXTENSIONES[foto.type];
+        if (!ext) { estado('Formato no admitido. Usa JPG, PNG o WebP.', 'error'); return; }
+        if (foto.size > MAX_FOTO) { estado('La foto pesa más de 5 MB. Reduce su tamaño.', 'error'); return; }
+        try {
+          const base64 = await archivoABase64(foto);
+          const anterior = imagenesPendientes.get(p.imagen);
+          if (anterior && !anterior.subida) {
+            URL.revokeObjectURL(anterior.url);
+            imagenesPendientes.delete(p.imagen);
+          }
+          const ruta = `img/${slug(`${p.nombre} ${p.descripcion}`)}-${Date.now().toString(36)}.${ext}`;
+          imagenesPendientes.set(ruta, { base64, url: URL.createObjectURL(foto), subida: false });
+          p.imagen = ruta;
+          entradaImg.value = ruta;
+          marcarCambios();
+          mostrar();
+          estado('Foto lista. Se subirá al pulsar "Guardar y publicar".', 'ok');
+        } catch (err) {
+          estado(err.message, 'error');
+        }
+      });
+
+      const botonFoto = el('label', { class: 'btn chico' }, 'Cambiar foto', archivo);
+
+      mostrar();
+
+      return el('div', { class: 'tarjeta-prod' },
+        el('div', {}, el('div', { class: 'mini-caja' }, img, vacio), botonFoto),
+        el('div', {},
+          el('div', { class: 'cabecera-prod' }, titulo,
+            el('div', { class: 'botones-prod' },
+              el('button', { type: 'button', class: 'btn chico', 'aria-label': 'Subir producto', onclick: () => mover(lista, i, -1) }, '↑'),
+              el('button', { type: 'button', class: 'btn chico', 'aria-label': 'Bajar producto', onclick: () => mover(lista, i, 1) }, '↓'),
+              el('button', { type: 'button', class: 'btn chico peligro', onclick: () => eliminar(lista, i, `"${p.nombre || 'este producto'}"`) }, 'Eliminar'))),
+          el('div', { class: 'fila' },
+            campoTxt('Nombre', p, 'nombre', { alCambiar: (v) => { titulo.textContent = v || '(sin nombre)'; } }),
+            campoTxt('Descripción', p, 'descripcion')),
+          el('div', { class: 'fila' },
+            campoNum('Precio de venta', p, 'precio'),
+            campoNum('Precio original (tachado, opcional)', p, 'precioOriginal', true)),
+          el('div', { class: 'fila' }, campoImg),
+          el('div', { class: 'checks' },
+            casilla('Vendido', esVerdadero(p.vendido), (v) => { p.vendido = v; }),
+            casilla('Aparece en la página', !esFalso(p.aparece), (v) => { p.aparece = v; }))));
+    }
+
+    function seccionUI(s, i) {
+      const opciones = ['oscuro', 'rosa'];
+      if (s.estilo && !opciones.includes(s.estilo)) opciones.push(s.estilo);
+      const selector = el('select', {}, opciones.map((o) => el('option', { value: o }, o)));
+      selector.value = s.estilo ?? opciones[0];
+      selector.addEventListener('change', () => { s.estilo = selector.value; marcarCambios(); });
+
+      const etiquetaEstilo = el('label', { class: 'campo' }, el('span', {}, 'Estilo'), selector);
+
+      return el('details', { class: 'bloque', open: true },
+        el('summary', {}, `${s.titulo || 'Sección'} · ${s.estilo || '-'} · ${s.productos.length} productos`),
+        el('div', { class: 'fila' }, campoTxt('Título de la sección', s, 'titulo'), etiquetaEstilo),
+        s.productos.map((p, j) => tarjetaProducto(p, s.productos, j)),
+        el('div', { class: 'acciones' },
+          el('button', {
+            type: 'button', class: 'btn', onclick: () => {
+              s.productos.push({ nombre: '', descripcion: '', precio: '', vendido: false, aparece: true, imagen: '' });
+              marcarCambios();
+              render();
+            }
+          }, '+ Añadir producto'),
+          el('button', { type: 'button', class: 'btn peligro', onclick: () => eliminar(datos.secciones, i, `la sección "${s.titulo || i + 1}" con todos sus productos`) }, 'Eliminar sección')));
+    }
+
+    function bloqueGeneral() {
+      return el('div', { class: 'bloque' },
+        el('div', { class: 'fila' }, campoTxt('Símbolo de moneda', datos, 'moneda', { corto: true })),
+        el('div', { class: 'acciones' },
+          el('button', {
+            type: 'button', class: 'btn', onclick: () => {
+              datos.secciones.push({ titulo: 'Perfumes', estilo: 'oscuro', productos: [] });
+              marcarCambios();
+              render();
+            }
+          }, '+ Añadir sección')));
+    }
+
+    function bloqueFaq() {
+      const lista = datos.preguntas;
+      return el('details', { class: 'bloque', open: true },
+        el('summary', {}, `Preguntas frecuentes (${lista.length})`),
+        lista.map((q, i) => el('div', { class: 'tarjeta-prod', style: 'grid-template-columns:1fr' },
+          campoTxt('Pregunta', q, 'pregunta'),
+          campoTxt('Respuesta', q, 'respuesta', { area: true }),
+          el('div', { class: 'botones-prod' },
+            el('button', { type: 'button', class: 'btn chico', 'aria-label': 'Subir pregunta', onclick: () => mover(lista, i, -1) }, '↑'),
+            el('button', { type: 'button', class: 'btn chico', 'aria-label': 'Bajar pregunta', onclick: () => mover(lista, i, 1) }, '↓'),
+            el('button', { type: 'button', class: 'btn chico peligro', onclick: () => eliminar(lista, i, 'esta pregunta') }, 'Eliminar')))),
+        el('div', { class: 'acciones' },
+          el('button', {
+            type: 'button', class: 'btn', onclick: () => {
+              lista.push({ pregunta: '', respuesta: '' });
+              marcarCambios();
+              render();
+            }
+          }, '+ Añadir pregunta')));
+    }
+
+    function render() {
+      const y = window.scrollY;
+      const contenedor = $('editor');
+      contenedor.replaceChildren(
+        bloqueGeneral(),
+        ...datos.secciones.map(seccionUI),
+        bloqueFaq());
+      window.scrollTo(0, y);
+    }
+
+    /* ---------- Cargar y guardar ---------- */
+    async function cargar() {
+      fijarOcupado(true);
+      estado('Cargando catálogo…');
+      try {
+        const r = await gh(`${rutaContenido(ARCHIVO)}?ref=${seg(cfg.branch)}`);
+        if (r.encoding !== 'base64' || !r.content) {
+          throw new Error('GitHub no devolvió el contenido de productos.json.');
+        }
+        const json = JSON.parse(base64ATexto(r.content));
+        if (!json || typeof json !== 'object' || Array.isArray(json)) {
+          throw new Error('productos.json no tiene el formato esperado.');
+        }
+        json.secciones = Array.isArray(json.secciones) ? json.secciones : [];
+        json.preguntas = Array.isArray(json.preguntas) ? json.preguntas : [];
+        for (const s of json.secciones) s.productos = Array.isArray(s.productos) ? s.productos : [];
+
+        for (const i of imagenesPendientes.values()) URL.revokeObjectURL(i.url);
+        imagenesPendientes.clear();
+        datos = json;
+        shaActual = r.sha;
+        sinGuardar = false;
+        $('pendiente').hidden = true;
+        $('editor').hidden = false;
+        $('conexion').open = false;
+        render();
+        estado(`Catálogo cargado desde ${cfg.owner}/${cfg.repo} (${cfg.branch}).`, 'ok');
+      } catch (err) {
+        estado(err instanceof SyntaxError ? 'productos.json en GitHub tiene errores de formato.' : mensajeError(err), 'error');
+      } finally {
+        fijarOcupado(false);
+      }
+    }
+
+    async function guardar() {
+      if (ocupado || !datos) return;
+      const fallo = validar();
+      if (fallo) { estado(fallo, 'error'); return; }
+
+      fijarOcupado(true);
+      try {
+        const usadas = new Set(todosProductos().map((p) => p.imagen));
+        const subir = [...imagenesPendientes.entries()].filter(([ruta, i]) => !i.subida && usadas.has(ruta));
+        let n = 0;
+        for (const [ruta, imagen] of subir) {
+          estado(`Subiendo foto ${++n} de ${subir.length}…`);
+          await gh(rutaContenido(ruta), {
+            method: 'PUT',
+            body: JSON.stringify({ message: `Añadir ${ruta}`, content: imagen.base64, branch: cfg.branch })
+          });
+          imagen.subida = true;
+        }
+
+        estado('Publicando productos.json…');
+        const r = await gh(rutaContenido(ARCHIVO), {
+          method: 'PUT',
+          body: JSON.stringify({
+            message: 'Actualizar catálogo desde el admin',
+            content: textoABase64(serializar(datos)),
+            sha: shaActual,
+            branch: cfg.branch
+          })
+        });
+        shaActual = r.content.sha;
+        sinGuardar = false;
+        $('pendiente').hidden = true;
+        estado('Publicado ✔ GitHub Pages tarda uno o dos minutos en mostrar los cambios.', 'ok');
+      } catch (err) {
+        estado(mensajeError(err), 'error');
+      } finally {
+        fijarOcupado(false);
+      }
+    }
+
+    /* ---------- Eventos ---------- */
+    $('form-conexion').addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (ocupado) return;
+      if (sinGuardar && !confirm('Hay cambios sin publicar. Si recargas se perderán. ¿Continuar?')) return;
+      cfg.owner = $('cfg-owner').value.trim();
+      cfg.repo = $('cfg-repo').value.trim();
+      cfg.branch = $('cfg-branch').value.trim() || 'main';
+      cfg.token = $('cfg-token').value.trim();
+      escribirAlmacen(CLAVE_CFG, JSON.stringify({ owner: cfg.owner, repo: cfg.repo, branch: cfg.branch }));
+      escribirAlmacen(CLAVE_TOKEN, $('cfg-recordar').checked ? cfg.token : null);
+      cargar();
+    });
+
+    $('olvidar').addEventListener('click', () => {
+      escribirAlmacen(CLAVE_TOKEN, null);
+      cfg.token = '';
+      $('cfg-token').value = '';
+      $('cfg-recordar').checked = false;
+      estado('Token olvidado en este navegador.', 'ok');
+    });
+
+    $('guardar').addEventListener('click', guardar);
+
+    window.addEventListener('beforeunload', (e) => {
+      if (sinGuardar) {
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    });
+
+    /* ---------- Inicio ---------- */
+    (function iniciar() {
+      let guardada = {};
+      try { guardada = JSON.parse(leerAlmacen(CLAVE_CFG) || '{}') || {}; } catch { guardada = {}; }
+      if (guardada.owner) $('cfg-owner').value = guardada.owner;
+      if (guardada.repo) $('cfg-repo').value = guardada.repo;
+      if (guardada.branch) $('cfg-branch').value = guardada.branch;
+      const token = leerAlmacen(CLAVE_TOKEN);
+      if (token) {
+        $('cfg-token').value = token;
+        $('cfg-recordar').checked = true;
+      }
+    })();
+  </script>
+</body>
+
+</html>
