@@ -5,7 +5,7 @@
       "titulo": "Perfumes",
       "estilo": "oscuro",
       "productos": [
-        { "nombre": "Bleu De Chanel", "descripcion": "Eau de Parfum 100ml", "precio": 2200, "precioOriginal": 3600, "vendido": false, "aparece": true, "imagen": "img/bleu-de-chanel.jpg" },
+        { "nombre": "Bleu De Chanel", "descripcion": "Eau de Parfum 100ml", "precio": 2200, "vendido": false, "aparece": true, "imagen": "img/bleu-de-chanel.jpg", "precioOriginal": 4500 },
         { "nombre": "Amber Labdanum", "descripcion": "Jo Malone London 100ml", "precio": 2100, "precioOriginal": 3300, "vendido": false, "aparece": true, "imagen": "img/amber-labdanum.jpg" },
         { "nombre": "Acqua di Gio", "descripcion": "Parfum 100ml", "precio": 1375, "precioOriginal": 1800, "vendido": false, "aparece": true, "imagen": "img/acqua-di-gio.jpg" },
         { "nombre": "Stronger with you", "descripcion": "Parfum 100ml", "precio": 1325, "precioOriginal": 1920, "vendido": true, "aparece": true, "imagen": "img/stronger-with-you.jpg" },
