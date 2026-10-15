@@ -5,27 +5,27 @@
       "titulo": "Perfumes",
       "estilo": "oscuro",
       "productos": [
-        { "nombre": "Bleu De Chanel", "descripcion": "Eau de Parfum 100ml", "precio": 2200, "vendido": false, "aparece": true, "imagen": "img/bleu-de-chanel.jpg", "precioOriginal": 4500 },
-        { "nombre": "Amber Labdanum", "descripcion": "Jo Malone London 100ml", "precio": 2100, "precioOriginal": 3300, "vendido": false, "aparece": true, "imagen": "img/amber-labdanum.jpg" },
-        { "nombre": "Acqua di Gio", "descripcion": "Parfum 100ml", "precio": 1400, "vendido": true, "aparece": true, "imagen": "img/acqua-di-gio.jpg", "precioOriginal": 2000 },
-        { "nombre": "Stronger with you", "descripcion": "Parfum 100ml", "precio": 1325, "precioOriginal": 1920, "vendido": true, "aparece": true, "imagen": "img/stronger-with-you.jpg" },
-        { "nombre": "Azzaro", "descripcion": "Wanted 100ml", "precio": 800, "precioOriginal": 1450, "vendido": false, "aparece": true, "imagen": "img/azzaro-wanted.jpg" },
-        { "nombre": "Phantom", "descripcion": "Parfum 100ml", "precio": 950, "precioOriginal": 1500, "vendido": false, "aparece": true, "imagen": "img/phantom-parfum.jpg" },
-        { "nombre": "Phantom", "descripcion": "Intense 100ml", "precio": 1000, "precioOriginal": 2300, "vendido": true, "aparece": true, "imagen": "img/phantom-intense.jpg" },
-        { "nombre": "Versace Eros", "descripcion": "EDT 100ml", "precio": 900, "precioOriginal": 1200, "vendido": false, "aparece": true, "imagen": "img/versace-eros-edt.jpg" },
-        { "nombre": "Versace Eros", "descripcion": "Najim 100ml", "precio": 1125, "precioOriginal": 2000, "vendido": true, "aparece": true, "imagen": "img/versace-eros-najim.jpg" }
+        { "nombre": "Bleu De Chanel",    "descripcion": "Eau de Parfum 100ml",    "precio": 2200, "precioOriginal": 4500, "vendido": false, "aparece": true, "imagen": "img/bleu-de-chanel.jpg",      "familia": "🪵 Amaderado · 🌿 Aromático · 🍋 Cítrico",   "notasSalida": "Limón, menta, toronja, pimienta rosa",              "notasCorazon": "Jengibre, nuez moscada, jazmín, melón",      "notasFondo": "Incienso, cedro, sándalo, pachulí, labdanum" },
+        { "nombre": "Amber Labdanum",    "descripcion": "Jo Malone London 100ml", "precio": 2100, "precioOriginal": 3300, "vendido": false, "aparece": true, "imagen": "img/amber-labdanum.jpg",      "familia": "🔥 Ambarado · 🍬 Dulce · 🌿 Resinoso",       "notasSalida": "Salvia esclarea, bergamota",                        "notasCorazon": "Labdanum, ámbar, incienso",                  "notasFondo": "Vetiver, benjuí, almizcle" },
+        { "nombre": "Acqua di Gio",      "descripcion": "Parfum 100ml",           "precio": 1400, "precioOriginal": 2000, "vendido": true,  "aparece": true, "imagen": "img/acqua-di-gio.jpg",        "familia": "💨 Fresco · 🌊 Acuático · 🪵 Amaderado",     "notasSalida": "Bergamota, pimienta rosa, notas marinas",           "notasCorazon": "Salvia, romero, geranio",                    "notasFondo": "Pachulí, musgo de roble, ámbar gris, incienso" },
+        { "nombre": "Stronger with you", "descripcion": "Parfum 100ml",           "precio": 1325, "precioOriginal": 1920, "vendido": true,  "aparece": true, "imagen": "img/stronger-with-you.jpg",   "familia": "🍬 Dulce · 🍮 Gourmand · 🔥 Especiado",      "notasSalida": "Cardamomo, menta, lavanda, violeta",                "notasCorazon": "Salvia, canela, geranio, jazmín",            "notasFondo": "Vainilla, castaña glaseada, ámbar, cedro, vetiver" },
+        { "nombre": "Azzaro",            "descripcion": "Wanted 100ml",           "precio": 800,  "precioOriginal": 1450, "vendido": false, "aparece": true, "imagen": "img/azzaro-wanted.jpg",       "familia": "🔥 Especiado · 🍋 Cítrico · 🪵 Amaderado",   "notasSalida": "Limón, bergamota, cardamomo, lavanda",              "notasCorazon": "Jengibre, menta, manzana, enebro",           "notasFondo": "Vetiver haitiano, haba tonka, maderas, incienso" },
+        { "nombre": "Phantom",           "descripcion": "Parfum 100ml",           "precio": 950,  "precioOriginal": 1500, "vendido": false, "aparece": true, "imagen": "img/phantom-parfum.jpg",      "familia": "🌿 Aromático · 🍬 Dulce · 🧂 Salado",        "notasSalida": "Limón, lavanda",                                    "notasCorazon": "Lavanda, pachulí, vetiver",                  "notasFondo": "Vainilla, haba tonka, maderas, notas saladas" },
+        { "nombre": "Phantom",           "descripcion": "Intense 100ml",          "precio": 1000, "precioOriginal": 2300, "vendido": true,  "aparece": true, "imagen": "img/phantom-intense.jpg",     "familia": "🍬 Dulce · 🌿 Aromático · 🔥 Intenso",       "notasSalida": "Limón, bergamota, lavanda",                         "notasCorazon": "Lavanda, especias, pachulí",                 "notasFondo": "Vainilla intensa, haba tonka, sándalo" },
+        { "nombre": "Versace Eros",      "descripcion": "EDT 100ml",              "precio": 900,  "precioOriginal": 1200, "vendido": false, "aparece": true, "imagen": "img/versace-eros-edt.jpg",    "familia": "🍃 Fresco · 🍬 Dulce · 🌿 Aromático",        "notasSalida": "Menta, manzana verde, limón",                       "notasCorazon": "Haba tonka, geranio, ambroxan, salvia",      "notasFondo": "Vainilla, vetiver, musgo de roble, cedro, ámbar" },
+        { "nombre": "Versace Eros",      "descripcion": "Najim 100ml",            "precio": 1125, "precioOriginal": 2000, "vendido": true,  "aparece": true, "imagen": "img/versace-eros-najim.jpg",  "familia": "🍬 Dulce · 🍃 Mentolado · 🪵 Amaderado",     "notasSalida": "Menta glacial, manzana verde, limón",               "notasCorazon": "Haba tonka, geranio, ambroxan",              "notasFondo": "Vainilla, ámbar, cedro, vetiver" }
       ]
     },
     {
       "titulo": "Perfumes",
       "estilo": "rosa",
       "productos": [
-        { "nombre": "Million Gold", "descripcion": "For Her 80ml", "precio": 1100, "precioOriginal": 1600, "vendido": false, "aparece": true, "imagen": "img/million-gold.jpg" },
-        { "nombre": "La Vie Est Belle", "descripcion": "EDP 100ml", "precio": 1250, "precioOriginal": 1840, "vendido": true, "aparece": true, "imagen": "img/la-vie-est-belle.jpg" },
-        { "nombre": "Purple Melancholia", "descripcion": "Valentino Donna 100ml", "precio": 1275, "precioOriginal": 2000, "vendido": true, "aparece": true, "imagen": "img/purple-melancholia.jpg" },
-        { "nombre": "Light Blue", "descripcion": "Dolce & Gabbana 100ml", "precio": 750, "precioOriginal": 1800, "vendido": false, "aparece": true, "imagen": "img/light-blue.jpg" },
-        { "nombre": "Good Girl", "descripcion": "CH Blush Elixir 80ml", "precio": 1400, "precioOriginal": 2000, "vendido": true, "aparece": true, "imagen": "img/good-girl.jpg" },
-        { "nombre": "La Bomba", "descripcion": "Carolina Herrera 80ml", "precio": 1525, "precioOriginal": 3000, "vendido": true, "aparece": true, "imagen": "img/la-bomba.jpg" }
+        { "nombre": "Million Gold",       "descripcion": "For Her 80ml",          "precio": 1100, "precioOriginal": 1600, "vendido": false, "aparece": true, "imagen": "img/million-gold.jpg",       "familia": "🌸 Floral · 🍬 Dulce · 🍮 Gourmand",         "notasSalida": "Neroli, pera, flor de azahar",                      "notasCorazon": "Jazmín, flor de naranjo",                    "notasFondo": "Vainilla, sándalo, almizcle" },
+        { "nombre": "La Vie Est Belle",   "descripcion": "EDP 100ml",             "precio": 1250, "precioOriginal": 1840, "vendido": true,  "aparece": true, "imagen": "img/la-vie-est-belle.jpg",   "familia": "🍮 Gourmand · 🍬 Dulce · 🌸 Floral",         "notasSalida": "Grosella negra, pera",                              "notasCorazon": "Iris, jazmín, flor de naranjo",              "notasFondo": "Praliné, vainilla, haba tonka, pachulí" },
+        { "nombre": "Purple Melancholia", "descripcion": "Valentino Donna 100ml", "precio": 1275, "precioOriginal": 2000, "vendido": true,  "aparece": true, "imagen": "img/purple-melancholia.jpg", "familia": "🌸 Floral · 🍬 Dulce · 🔥 Ambarado",         "notasSalida": "Bergamota, grosella negra",                         "notasCorazon": "Jazmín sambac, rosa",                        "notasFondo": "Vainilla, pachulí, almizcle" },
+        { "nombre": "Light Blue",         "descripcion": "Dolce & Gabbana 100ml", "precio": 750,  "precioOriginal": 1800, "vendido": false, "aparece": true, "imagen": "img/light-blue.jpg",         "familia": "🍋 Cítrico · 💨 Fresco · 🍏 Afrutado",       "notasSalida": "Manzana Granny Smith, limón de Sicilia, campanilla","notasCorazon": "Bambú, jazmín, rosa blanca",                 "notasFondo": "Cedro, ámbar, almizcle" },
+        { "nombre": "Good Girl",          "descripcion": "CH Blush Elixir 80ml",  "precio": 1400, "precioOriginal": 2000, "vendido": true,  "aparece": true, "imagen": "img/good-girl.jpg",          "familia": "🍬 Dulce · 🌸 Floral · 🍮 Gourmand",         "notasSalida": "Almendra, bergamota",                               "notasCorazon": "Nardo, jazmín sambac",                       "notasFondo": "Vainilla, cacao, haba tonka" },
+        { "nombre": "La Bomba",           "descripcion": "Carolina Herrera 80ml", "precio": 1525, "precioOriginal": 3000, "vendido": true,  "aparece": true, "imagen": "img/la-bomba.jpg",           "familia": "🍬 Dulce · 🍮 Gourmand · 🔥 Intenso",        "notasSalida": "Almendra, café, bergamota",                         "notasCorazon": "Jazmín, nardo, azahar",                      "notasFondo": "Vainilla, cacao, haba tonka, almizcle" }
       ]
     }
   ],
@@ -41,6 +41,10 @@
     {
       "pregunta": "¿Qué es ese precio rojo tachado?",
       "respuesta": "Es el precio original del perfume en tienda.\n\nLo pusimos para que te des una idea del cambio de precio y de cuánto ahorras comprando con nosotros."
+    },
+    {
+      "pregunta": "¿Cómo veo las notas de cada perfume?",
+      "respuesta": "En cada perfume disponible verás el botón \"Ver descripción\".\n\nAl pulsarlo se abre la foto en grande junto con su familia olfativa (dulce, cítrico, amaderado…) y su pirámide de notas: salida, corazón y fondo.\n\nSi un perfume ya está agotado, el botón se desactiva hasta que vuelva a haber stock."
     }
   ]
 }

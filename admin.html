@@ -563,6 +563,7 @@
     const CLAVE_CFG = 'jw-admin-cfg';
     const CLAVE_TOKEN = 'jw-admin-token';
     const MAX_FOTO = 5 * 1024 * 1024;
+    const CAMPOS_FICHA = ['familia', 'notasSalida', 'notasCorazon', 'notasFondo'];
     const EXTENSIONES = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
 
     const $ = (id) => document.getElementById(id);
@@ -696,6 +697,7 @@
     function lineaProducto(p) {
       const partes = Object.entries(p)
         .filter(([k, v]) => !(k === 'precioOriginal' && v === ''))
+        .filter(([k, v]) => !(CAMPOS_FICHA.includes(k) && String(v ?? '').trim() === ''))
         .map(([k, v]) => `${JSON.stringify(k)}: ${JSON.stringify(v)}`);
       return `{ ${partes.join(', ')} }`;
     }
@@ -917,6 +919,13 @@
               campoNum('Precio de venta', p, 'precio', false, cambioEstado),
               campoNum('Precio original (tachado, opcional)', p, 'precioOriginal', true)),
             el('div', { class: 'fila' }, campoImg),
+            el('div', { class: 'fila' },
+              campoTxt('✨ Perfil olfativo (ej. 🍬 Dulce · 🍋 Cítrico)', p, 'familia')),
+            el('div', { class: 'fila' },
+              campoTxt('🍋 Notas de salida', p, 'notasSalida'),
+              campoTxt('🌸 Notas de corazón', p, 'notasCorazon'),
+              campoTxt('🪵 Notas de fondo', p, 'notasFondo')),
+            el('p', { class: 'ayuda' }, 'Separa cada nota con comas. Se muestran como etiquetas en "Ver descripción". Si el producto está vendido, el botón se desactiva en la página.'),
             el('div', { class: 'checks' },
               casilla('Vendido', esVerdadero(p.vendido), (v) => { p.vendido = v; cambioEstado(); }),
               casilla('Aparece en la página', !esFalso(p.aparece), (v) => { p.aparece = v; cambioEstado(); })))));
@@ -982,7 +991,10 @@
         el('div', { class: 'acciones' },
           el('button', {
             type: 'button', class: 'btn', onclick: () => {
-              const nuevo = { nombre: '', descripcion: '', precio: '', vendido: false, aparece: true, imagen: '' };
+              const nuevo = {
+                nombre: '', descripcion: '', precio: '', vendido: false, aparece: true, imagen: '',
+                familia: '', notasSalida: '', notasCorazon: '', notasFondo: ''
+              };
               s.productos.push(nuevo);
               productosAbiertos.add(nuevo);
               marcarCambios();

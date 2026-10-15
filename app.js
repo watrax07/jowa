@@ -30,6 +30,150 @@ const DECORACION = {
 const esVerdadero = (v) => v === true || v === 'true';
 const esFalso = (v) => v === false || v === 'false';
 
+/* ---------- Visor de descripción (foto en grande + notas) ---------- */
+
+// Productos dibujados: el botón "Ver descripción" guarda aquí su índice.
+const REGISTRO = [];
+const WA_NUMERO = '525567763670';
+
+// "🍋 Cítrico · 💨 Fresco" -> ["🍋 Cítrico", "💨 Fresco"]
+const trozos = (texto) => String(texto ?? '')
+  .split(/\s*[·•|,]\s*/)
+  .map((t) => t.trim())
+  .filter(Boolean);
+
+const chips = (texto, clase) => trozos(texto)
+  .map((t) => `<span class="${clase}">${esc(t)}</span>`)
+  .join('');
+
+function ocultarCargador() {
+  const cargador = document.getElementById('cargador');
+  if (!cargador || cargador.classList.contains('cargador--fin')) return;
+  cargador.classList.add('cargador--fin');
+  setTimeout(() => { cargador.hidden = true; }, 650);
+}
+
+function nivelNotas(icono, titulo, valor) {
+  if (!String(valor ?? '').trim()) return '';
+  return `
+    <li class="visor__nivel">
+      <span class="visor__nivel-icono" aria-hidden="true">${icono}</span>
+      <div class="visor__nivel-info">
+        <strong class="visor__nivel-titulo">${esc(titulo)}</strong>
+        <span class="visor__notas">${chips(valor, 'visor__nota')}</span>
+      </div>
+    </li>`;
+}
+
+function contenidoVisor(p, moneda) {
+  const formato = (v) => (typeof v === 'number' ? `${moneda}${v}` : esc(v));
+  const original = p.precioOriginal ? `<s class="visor__original">${formato(p.precioOriginal)}</s>` : '';
+
+  const familia = p.familia
+    ? `<div class="visor__bloque">
+         <span class="visor__etiqueta">✨ Perfil olfativo</span>
+         <div class="visor__chips">${chips(p.familia, 'visor__chip')}</div>
+       </div>`
+    : '';
+
+  const niveles =
+    nivelNotas('🍋', 'Notas de salida', p.notasSalida) +
+    nivelNotas('🌸', 'Notas de corazón', p.notasCorazon) +
+    nivelNotas('🪵', 'Notas de fondo', p.notasFondo);
+
+  const piramide = niveles
+    ? `<div class="visor__bloque">
+         <span class="visor__etiqueta">🧪 Pirámide de notas</span>
+         <ul class="visor__niveles">${niveles}</ul>
+       </div>`
+    : '<p class="visor__vacio">📝 Aún no registramos las notas de este perfume.</p>';
+
+  const mensaje = encodeURIComponent(
+    `Hola JW KICKS, me interesa el perfume ${p.nombre}${p.descripcion ? ` (${p.descripcion})` : ''}.`);
+
+  return `
+    <div class="visor__foto">
+      <img src="${esc(p.imagen)}" alt="${esc(p.nombre)}"
+           onerror="this.closest('.visor__foto').classList.add('sin-foto')">
+      <span class="visor__respaldo">${esc(p.nombre)}</span>
+    </div>
+    <div class="visor__datos">
+      <h3 class="visor__nombre" id="visor-nombre">${esc(p.nombre)}</h3>
+      <p class="visor__desc">🧴 ${esc(p.descripcion)}</p>
+      <p class="visor__precio">${formato(p.precio)} ${original}</p>
+      <span class="visor__stock">✅ Disponible ahora</span>
+      ${familia}
+      ${piramide}
+      <a class="visor__wa" href="https://wa.me/${WA_NUMERO}?text=${mensaje}" target="_blank" rel="noopener">
+        💬 Lo quiero por WhatsApp
+      </a>
+    </div>`;
+}
+
+let visorNodo = null;
+let focoPrevio = null;
+
+function asegurarVisor() {
+  if (visorNodo) return visorNodo;
+  visorNodo = document.createElement('div');
+  visorNodo.className = 'visor';
+  visorNodo.id = 'visor';
+  visorNodo.hidden = true;
+  visorNodo.innerHTML = `
+    <div class="visor__fondo" data-cerrar="1"></div>
+    <div class="visor__caja" role="dialog" aria-modal="true" aria-labelledby="visor-nombre">
+      <button type="button" class="visor__cerrar" data-cerrar="1" aria-label="Cerrar descripción">✕</button>
+      <div class="visor__cuerpo"></div>
+    </div>`;
+  document.body.append(visorNodo);
+  return visorNodo;
+}
+
+function abrirVisor(indice) {
+  const ficha = REGISTRO[Number(indice)];
+  if (!ficha) return;
+  const visor = asegurarVisor();
+  visor.querySelector('.visor__cuerpo').innerHTML = contenidoVisor(ficha.p, ficha.moneda);
+  focoPrevio = document.activeElement;
+  visor.hidden = false;
+  document.body.classList.add('sin-scroll');
+  // Doble frame: el navegador ya calculó el estado cerrado, así la animación corre.
+  requestAnimationFrame(() => requestAnimationFrame(() => visor.classList.add('visor--abierto')));
+  const cerrar = visor.querySelector('.visor__cerrar');
+  if (cerrar) cerrar.focus();
+}
+
+function cerrarVisor() {
+  if (!visorNodo || visorNodo.hidden) return;
+  visorNodo.classList.remove('visor--abierto');
+  document.body.classList.remove('sin-scroll');
+  setTimeout(() => {
+    if (visorNodo && !visorNodo.classList.contains('visor--abierto')) visorNodo.hidden = true;
+  }, 300);
+  if (focoPrevio && typeof focoPrevio.focus === 'function') focoPrevio.focus();
+  focoPrevio = null;
+}
+
+document.addEventListener('click', (e) => {
+  const destino = e.target instanceof Element ? e.target : null;
+  if (!destino) return;
+
+  if (destino.closest('[data-cerrar]')) {
+    cerrarVisor();
+    return;
+  }
+
+  // Enlaces y botones propios (WhatsApp, cerrar…) conservan su función.
+  if (destino.closest('a, .tarjeta__ver:disabled')) return;
+
+  const abrir = destino.closest('[data-ver]');
+  if (abrir && !abrir.disabled) abrirVisor(abrir.dataset.ver);
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') cerrarVisor();
+});
+
 function tarjeta(p, moneda, estilo) {
   const formato = (v) => (typeof v === 'number' ? `${moneda}${v}` : esc(v));
   const precio = formato(p.precio);
@@ -51,22 +195,39 @@ function tarjeta(p, moneda, estilo) {
     </div>
     <div class="tarjeta__nombre">${esc(p.nombre)}</div>`;
 
+  const indice = REGISTRO.push({ p, moneda }) - 1;
+
+  // Sin stock: ni la tarjeta ni el botón abren el visor.
+  const botonVer = vendido
+    ? `<button type="button" class="tarjeta__ver tarjeta__ver--no" disabled aria-disabled="true"
+               title="Sin stock por ahora">🚫 Sin stock</button>`
+    : `<button type="button" class="tarjeta__ver" data-ver="${indice}"
+               aria-label="Ver descripción y notas de ${esc(p.nombre)}">Ver descripción
+         <span class="tarjeta__ver-flecha" aria-hidden="true">›</span>
+       </button>`;
+
+  // data-ver en el <article> = se abre tocando cualquier parte del perfume.
+  const abridor = vendido ? '' : ` data-ver="${indice}"`;
+  const claseClic = vendido ? clase : `${clase} tarjeta--clic`;
+
   if (estilo === 'rosa') {
     return `
-      <article class="${clase}">
+      <article class="${claseClic}"${abridor}>
         ${imagen}
         <div class="tarjeta__info">
           <p class="tarjeta__desc">${esc(p.descripcion)}</p>
           <p class="tarjeta__precio"><span>Precio:</span> ${precio}</p>
+          ${botonVer}
         </div>
       </article>`;
   }
 
   return `
-    <article class="${clase}">
+    <article class="${claseClic}"${abridor}>
       ${imagen}
       <p class="tarjeta__desc">${esc(p.descripcion)}</p>
       <p class="tarjeta__precio">Precio: ${precio}</p>
+      ${botonVer}
     </article>`;
 }
 
@@ -225,10 +386,13 @@ fetch(ARCHIVO_DATOS, { cache: 'no-store' })
   })
   .then((datos) => {
     const moneda = datos.moneda ?? '$';
+    REGISTRO.length = 0;
     catalogo.innerHTML =
       (datos.secciones || []).map((s) => seccion(s, moneda)).join('') +
       preguntas(datos.preguntas);
     inicializarFondoPortada();
+    asegurarVisor();
+    ocultarCargador();
   })
   .catch((err) => {
     console.error(err);
@@ -239,4 +403,9 @@ fetch(ARCHIVO_DATOS, { cache: 'no-store' })
         se abra desde un servidor web, no con doble clic.</p>
       </section>`;
     inicializarFondoPortada();
+    ocultarCargador();
   });
+
+// Red de seguridad: el cargador nunca se queda pegado.
+window.addEventListener('load', () => setTimeout(ocultarCargador, 400));
+setTimeout(ocultarCargador, 8000);
